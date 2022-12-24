@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import Navbar from "../components/organisms/navbar";
 import MainBanner from "../components/organisms/MainBanner";
+import TransactionStep from "../components/organisms/TransactionStep";
 
 export default function Home() {
   useEffect(() => {
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <Navbar />
       <MainBanner />
+      <TransactionStep />
       <section className="featured-game pt-50 pb-50">
         <div className="container-fluid">
           <h2 className="text-4xl fw-bold color-palette-1 mb-30">
