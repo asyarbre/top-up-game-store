@@ -1,5 +1,6 @@
 import React from "react";
 import cx from "classnames";
+import Link from "next/link";
 
 interface TableRowProps {
   image: string;
@@ -53,12 +54,12 @@ export default function TableRow(props: TableRowProps) {
         </div>
       </td>
       <td>
-        <a
-          href="../member/transactions-detail.html"
+        <Link
+          href="/member/transactions/detail"
           className="btn btn-status rounded-pill text-sm"
         >
           Details
-        </a>
+        </Link>
       </td>
     </tr>
   );
