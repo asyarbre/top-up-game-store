@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import cx from "classnames";
+import Link from "next/link";
 
 interface MenuitemProps {
   title: string;
@@ -13,10 +14,11 @@ interface MenuitemProps {
     | "menu-settings"
     | "menu-logout";
   active?: boolean;
+  href?: string;
 }
 
 export default function MenuItem(props: Partial<MenuitemProps>) {
-  const { title, icon, active } = props;
+  const { title, icon, active, href } = props;
   const classItem = cx({
     item: true,
     "mb-30": true,
@@ -33,9 +35,9 @@ export default function MenuItem(props: Partial<MenuitemProps>) {
         alt="Icon"
       />
       <p className="item-title m-0">
-        <a href="" className="text-lg text-decoration-none">
+        <Link href={href!} className="text-lg text-decoration-none">
           {title}
-        </a>
+        </Link>
       </p>
     </div>
   );
