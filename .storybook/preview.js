@@ -16,6 +16,13 @@ import "../styles/edit-profile.css";
 import "../styles/navbar-log-in.css";
 import "../styles/sign-up-photo-success.css";
 
+import * as nextImage from "next/image";
+
+Object.defineProperty(nextImage, "default", {
+  configurable: true,
+  value: (props) => <img {...props} />,
+});
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -24,4 +31,4 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};

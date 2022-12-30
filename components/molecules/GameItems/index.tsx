@@ -2,10 +2,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-interface GameItemProps {
+export interface GameItemProps {
   title: string;
   category: string;
-  thumbnail: 'Thumbnail-1' | 'Thumbnail-2' | 'Thumbnail-3' | 'Thumbnail-4' | 'Thumbnail-5';
+  thumbnail: '/img/Thumbnail-1.png' | '/img/Thumbnail-2.png' | '/img/Thumbnail-3.png' | '/img/Thumbnail-4.png' | '/img/Thumbnail-5.png';
 }
 
 export default function GameItem(props: GameItemProps) {
@@ -15,7 +15,7 @@ export default function GameItem(props: GameItemProps) {
       <Link href="/detail">
         <div className="blur-sharp">
           <Image
-            src={`/img/${thumbnail}.png`}
+            src={thumbnail}
             className="thumbnail"
             width={205}
             height={270}
