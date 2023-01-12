@@ -34,7 +34,7 @@ export default function FeaturedGame() {
               key={item._id}
               title={item.name}
               category={item.category.name}
-              thumbnail={`${API_IMG}/uploads/${item.thumbnail}`}
+              thumbnail={`${API_IMG}/${item.thumbnail}`}
               id={item._id}
             />
           ))}
