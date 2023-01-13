@@ -33,6 +33,7 @@
     "@storybook/react": "^6.5.13",
     "@storybook/testing-library": "^0.0.13",
     "@svgr/webpack": "^6.5.1",
+    "@types/aos": "^3.0.4",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "babel-loader": "^8.3.0",
     "eslint": "^8.28.0",
