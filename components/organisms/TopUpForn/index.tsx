@@ -2,7 +2,9 @@ import React from "react";
 import NominalItem from "../../molecules/NominalItems";
 import PaymentItem from "../../molecules/PaymentItems";
 
-function TopUpForm() {
+function TopUpForm(props) {
+  const { nominals, payments } = props;
+  console.log("Payments", payments);
   return (
     <form action="./checkout.html" method="POST">
       <div className="pt-md-50 pt-30">
@@ -28,7 +30,15 @@ function TopUpForm() {
           Nominal Top Up
         </p>
         <div className="row justify-content-between">
-          <NominalItem _id="123" coinQuantity={20} coinName="GOLD" price="50000" />
+          {nominals.map((nominal) => (
+            <NominalItem
+              key={nominal._id}
+              _id={nominal._id}
+              coinQuantity={nominal.coinQuantity}
+              coinName={nominal.coinName}
+              price={nominal.price}
+            />
+          ))}
           <div className="col-lg-4 col-sm-6"></div>
         </div>
       </div>
@@ -39,7 +49,15 @@ function TopUpForm() {
         </p>
         <fieldset id="paymentMethod">
           <div className="row justify-content-between">
-            <PaymentItem bankID="321" type="Transfer" name="BNI" />
+            {payments.map((payment) =>
+              payment.banks.map((bank) => (
+                <PaymentItem
+                  bankID={bank._id}
+                  type={payment.type}
+                  name={bank.bankName}
+                />
+              ))
+            )}
             <div className="col-lg-4 col-sm-6">{/* Blank */}</div>
           </div>
         </fieldset>
