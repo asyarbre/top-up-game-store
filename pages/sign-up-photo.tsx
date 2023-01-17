@@ -57,7 +57,6 @@ function signUp_photo() {
       router.push("/sign-up-success");
       localStorage.removeItem("user-form");
     }
-    console.log(result);
   };
 
   return (
