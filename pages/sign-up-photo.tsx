@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { getGameCategory } from "../services/player";
 import { setSignUp } from "../services/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/router";
 
 function signUp_photo() {
   const [categories, setCategories] = useState([]);
@@ -13,6 +16,8 @@ function signUp_photo() {
     name: '',
     email: '',
   });
+
+  const router = useRouter();
 
   const getGameCategoryAPI = useCallback(async () => {
     const data = await getGameCategory();
@@ -45,7 +50,13 @@ function signUp_photo() {
     data.append('favorite', favorite);
 
     const result = await setSignUp(data);
-    console.log("result: ", result);
+    if(result.data){
+      toast.success('Register Berhasil');
+      router.push('/sign-up-success');
+      localStorage.removeItem('user-form');
+    } else {
+      toast.error(result.message);
+    }
   };
 
   return (
@@ -134,6 +145,7 @@ function signUp_photo() {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </section>
   );
 }
