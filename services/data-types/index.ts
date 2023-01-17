@@ -33,3 +33,8 @@ export interface NominalsTypes {
   price: string;
 
 }
+
+export interface LoginTypes {
+  email: string;
+  password: string;
+}
