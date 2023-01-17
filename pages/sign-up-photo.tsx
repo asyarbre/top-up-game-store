@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { getGameCategory } from "../services/player";
 import { setSignUp } from "../services/auth";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 
 function signUp_photo() {
@@ -13,8 +13,8 @@ function signUp_photo() {
   const [image, setImage] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   const [localForm, setlocalForm] = useState({
-    name: '',
-    email: '',
+    name: "",
+    email: "",
   });
 
   const router = useRouter();
@@ -31,32 +31,33 @@ function signUp_photo() {
 
   useEffect(() => {
     const getLocalForm = localStorage.getItem("user-form");
-    setlocalForm(JSON.parse(getLocalForm));
+    setlocalForm(JSON.parse(getLocalForm!));
   }, []);
 
   const onSubmit = async () => {
-    const getLocalForm = await localStorage.getItem('user-form');
-    const form = JSON.parse(getLocalForm);
+    const getLocalForm = await localStorage.getItem("user-form");
+    const form = JSON.parse(getLocalForm!);
     const data = new FormData();
 
-    data.append('image', image);
-    data.append('email', form.email);
-    data.append('name', form.name);
-    data.append('password', form.password);
-    data.append('username', form.name);
-    data.append('phoneNumber', '08123456789');
-    data.append('role', 'user');
-    data.append('status', 'Y');
-    data.append('favorite', favorite);
+    data.append("image", image);
+    data.append("email", form.email);
+    data.append("name", form.name);
+    data.append("password", form.password);
+    data.append("username", form.name);
+    data.append("phoneNumber", "08123456789");
+    data.append("role", "user");
+    data.append("status", "Y");
+    data.append("favorite", favorite);
 
     const result = await setSignUp(data);
-    if(result.data){
-      toast.success('Register Berhasil');
-      router.push('/sign-up-success');
-      localStorage.removeItem('user-form');
-    } else {
+    if (result.error) {
       toast.error(result.message);
+    } else {
+      toast.success("Register Berhasil");
+      router.push("/sign-up-success");
+      localStorage.removeItem("user-form");
     }
+    console.log(result);
   };
 
   return (
