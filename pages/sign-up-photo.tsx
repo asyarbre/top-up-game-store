@@ -3,8 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getGameCategory } from "../services/player";
 import { setSignUp } from "../services/auth";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
 function signUp_photo() {
@@ -145,7 +144,6 @@ function signUp_photo() {
           </div>
         </form>
       </div>
-      <ToastContainer />
     </section>
   );
 }

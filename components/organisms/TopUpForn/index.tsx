@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { BanksTypes, NominalsTypes, PaymentTypes } from "../../../services/data-types";
 import NominalItem from "../../molecules/NominalItems";
 import PaymentItem from "../../molecules/PaymentItems";
+import { toast } from "react-toastify";
+
 
 interface TopUpFormProps {
   nominals: NominalsTypes[];
@@ -31,7 +33,7 @@ export default function TopUpForm(props: TopUpFormProps) {
 
   const onSubmit = () => {
     if(verifyID === "" || bankAccountName === "" || nominalItem === "" || paymentItem === "") {
-      alert("Please fill all the fields");
+      toast.error("Please fill all the fields");
       return;
     }else {
       const data = {
