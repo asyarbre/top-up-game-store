@@ -32,11 +32,11 @@ export default async function callAPI({ url, method, data, token }: CallAPIProps
     };
     return res;
   }
-
+  // console.log("Response API: ", response)
   const res = {
     error: false,
     message: "success",
-    data: response.data.data,
+    data: response.data.count ? response.data : response.data.data,
   };
 
   return res;
