@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { getMemberOverview } from "../../../services/player";
 import Category from "./Category";
 import TableRow from "./TableRow";
 import { toast } from "react-toastify";
-import { NumericFormat } from "react-number-format";
-
+import { HistoryTransactionTypes, TopupCategoriesTypes } from "../../../services/data-types";
 
 export default function OverviewContent() {
   const [count, setCount] = useState([]);
-
   const [data, setData] = useState([]);
-  useEffect(async () => {
+
+  const getMemberOverviewAPI = useCallback(async () => {
     const response = await getMemberOverview();
     if (response.error) {
       toast.error(response.message);
     } else {
-      console.log("response : ", response.data);
       setCount(response.data.count);
       setData(response.data.data);
     }
+  }, [])
+
+  useEffect(() => {
+    getMemberOverviewAPI();
   }, []);
 
   const image = process.env.NEXT_PUBLIC_API_IMG;
@@ -33,8 +35,8 @@ export default function OverviewContent() {
           </p>
           <div className="main-content">
             <div className="row">
-              {count.map((item) => (
-                <Category icon={item.name} nominal={item.value}>
+              {count.map((item: TopupCategoriesTypes) => (
+                <Category icon={item.name} nominal={item.value} key={item._id}>
                   {item.name}
                 </Category>
               ))}
@@ -58,8 +60,9 @@ export default function OverviewContent() {
                 </tr>
               </thead>
               <tbody>
-                {data.map((item) => (
+                {data.map((item: HistoryTransactionTypes) => (
                   <TableRow
+                    key={item._id}
                     image={`${image}/${item.historyVoucherTopup.thumbnail}`}
                     title={item.historyVoucherTopup.gameName}
                     category={item.historyVoucherTopup.category}

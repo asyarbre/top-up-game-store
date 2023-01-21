@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import cx from "classnames";
+import { NumericFormat } from "react-number-format";
 
 interface TableRowProps {
   image: string;
@@ -43,7 +44,15 @@ export default function TableRow(props: TableRowProps) {
         <p className="fw-medium color-palette-1 m-0">{item}</p>
       </td>
       <td>
-        <p className="fw-medium text-start color-palette-1 m-0">{price}</p>
+        <p className="fw-medium text-start color-palette-1 m-0">
+          <NumericFormat
+            value={price}
+            prefix="Rp. "
+            displayType="text"
+            thousandSeparator="."
+            decimalSeparator=","
+          />
+        </p>
       </td>
       <td>
         <div>
