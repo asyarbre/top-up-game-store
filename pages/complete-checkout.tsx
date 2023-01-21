@@ -1,6 +1,6 @@
 import React from "react";
 
-function complete_checkout() {
+export default function complete_checkout() {
   return (
     <section className="complete-checkout mx-auto pt-lg-145 pb-lg-145 pt-100 pb-80">
       <div className="container-fluid">
@@ -280,5 +280,3 @@ function complete_checkout() {
     </section>
   );
 }
-
-export default complete_checkout;
