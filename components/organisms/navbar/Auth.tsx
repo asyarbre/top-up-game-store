@@ -57,7 +57,7 @@ export default function Auth() {
             aria-labelledby="dropdownMenuLink"
           >
             <li>
-              <Link href="/" className="dropdown-item text-lg color-palette-2">
+              <Link href="/member" className="dropdown-item text-lg color-palette-2">
                 My Profile
               </Link>
             </li>
