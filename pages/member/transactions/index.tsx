@@ -14,7 +14,14 @@ export default function Transactions() {
   );
 }
 
-export async function getServerSideProps({ req }: any) {
+interface GetServerSideProps {
+  req: {
+    cookies: {
+      token: string;
+    }
+  };
+}
+export async function getServerSideProps({ req }: GetServerSideProps) {
   const { token } = req.cookies;
   if (!token) {
     return {
@@ -25,15 +32,7 @@ export async function getServerSideProps({ req }: any) {
     };
   }
 
-  const jwtToken = Buffer.from(token, "base64").toString("ascii");
-  const payload: JWTPayloadTypes = jwtDecode(jwtToken);
-  const userFromPayload: UserTypes = payload.player;
-  const IMG = process.env.NEXT_PUBLIC_API_IMG;
-  userFromPayload.avatar = `${IMG}/${userFromPayload.avatar}`;
-
   return {
-    props: {
-      user: userFromPayload,
-    },
+    props: {},
   };
 }
