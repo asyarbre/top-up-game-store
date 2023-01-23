@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { getMemberTransactions } from "../../../services/member";
 import ButtonTab from "./ButtonTab";
 import TableRow from "./TableRow";
+import { toast } from "react-toastify";
+import { NumericFormat } from "react-number-format";
 
 export default function TransactionContent() {
+  const [total, setTotal] = useState(0);
+
+  const getMemberTransactionAPI = useCallback(async () => {
+    const response = await getMemberTransactions();
+    if (response.error) {
+      toast.error(response.message);
+    } else {
+      console.log("data: ", response);
+      setTotal(response.data.total);
+    }
+  }, []);
+
+  useEffect(() => {
+    getMemberTransactionAPI();
+  }, []);
   return (
     <main className="main-wrapper">
       <div className="ps-lg-0">
@@ -12,7 +30,13 @@ export default function TransactionContent() {
         <div className="mb-30">
           <p className="text-lg color-palette-2 mb-12">You’ve spent</p>
           <h3 className="text-5xl fw-medium color-palette-1">
-            Rp 4.518.000.500
+            <NumericFormat
+              value={total}
+              prefix="Rp. "
+              displayType="text"
+              thousandSeparator="."
+              decimalSeparator=","
+            />
           </h3>
         </div>
         <div className="row mt-30 mb-20">
@@ -22,7 +46,6 @@ export default function TransactionContent() {
               <ButtonTab title="Success" active={false} />
               <ButtonTab title="Pending" active={false} />
               <ButtonTab title="Failed" active={false} />
-
             </div>
           </div>
         </div>
@@ -44,10 +67,38 @@ export default function TransactionContent() {
                 </tr>
               </thead>
               <tbody id="list_status_item">
-                <TableRow image="overview-1" title="Mobile Legend" category="Desktop" item={200} price={290000} status="Pending"/>
-                <TableRow image="overview-2" title="Call of duty" category="Desktop" item={200} price={290000} status="Failed"/>
-                <TableRow image="overview-3" title="Mobile Legend" category="Desktop" item={200} price={290000} status="Success"/>
-                <TableRow image="overview-4" title="Mobile Legend" category="Desktop" item={200} price={290000} status="Pending"/>
+                <TableRow
+                  image="overview-1"
+                  title="Mobile Legend"
+                  category="Desktop"
+                  item={200}
+                  price={290000}
+                  status="Pending"
+                />
+                <TableRow
+                  image="overview-2"
+                  title="Call of duty"
+                  category="Desktop"
+                  item={200}
+                  price={290000}
+                  status="Failed"
+                />
+                <TableRow
+                  image="overview-3"
+                  title="Mobile Legend"
+                  category="Desktop"
+                  item={200}
+                  price={290000}
+                  status="Success"
+                />
+                <TableRow
+                  image="overview-4"
+                  title="Mobile Legend"
+                  category="Desktop"
+                  item={200}
+                  price={290000}
+                  status="Pending"
+                />
               </tbody>
             </table>
           </div>
