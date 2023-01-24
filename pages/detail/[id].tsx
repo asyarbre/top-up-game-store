@@ -1,5 +1,4 @@
-import { useRouter } from "next/router";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Footer from "../../components/organisms/Footer";
 import Navbar from "../../components/organisms/navbar";
 import TopUpForm from "../../components/organisms/TopUpForn";
@@ -14,6 +13,9 @@ export interface DetailProps {
 }
 
 export default function Detail({dataItem, nominals, payments}: DetailProps) {
+  useEffect(() => {
+    localStorage.setItem("data-item", JSON.stringify(dataItem));
+  }, []);
   return (
     <>
       <Navbar />
