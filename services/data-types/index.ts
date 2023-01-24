@@ -66,12 +66,24 @@ export interface HistoryVoucherToptupTypes {
   category: string;
   coinQuantity: number;
   coinName: string;
+  price: number;
+}
+
+export interface HistoryPaymentTypes {
+  bankName: string;
+  name: string;
+  noRekening: string;
+  type: string;
 }
 export interface HistoryTransactionTypes {
   _id: string;
   historyVoucherTopup: HistoryVoucherToptupTypes;
   value: number;
   status: string;
+  accountUser: string;
+  tax: number;
+  name: string;
+  historyPayment: HistoryPaymentTypes;
 }
 
 export interface TopupCategoriesTypes {
