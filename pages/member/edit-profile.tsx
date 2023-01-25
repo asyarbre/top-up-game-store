@@ -31,7 +31,6 @@ export default function EditProfile() {
   }, []);
 
   const onSubmit = async () => {
-    console.log("data: ", user);
     const data = new FormData();
 
     data.append("image", user.avatar);
@@ -40,7 +39,6 @@ export default function EditProfile() {
     if (response.error) {
       toast.error(response.message);
     } else {
-      console.log("data : ", response);
       Cookies.remove("token");
       router.push("/sign-in");
     }
