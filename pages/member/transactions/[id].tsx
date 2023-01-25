@@ -10,7 +10,6 @@ interface TransactionDetailProps {
 
 export default function TrasactionDetail(props : TransactionDetailProps) {
   const { transactionDetail } = props;
-  console.log("detail: ", transactionDetail);
   return (
     <section className="transactions-detail overflow-auto">
       <TransactionDetailContent data={transactionDetail} />

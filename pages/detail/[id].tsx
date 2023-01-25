@@ -53,7 +53,6 @@ export async function getStaticPaths() {
       id: item._id,
     },
   }));
-  console.log("Paths : ", paths);
   return {
     paths,
     fallback: false,
@@ -69,7 +68,6 @@ export interface GetStaticProps {
 export async function getStaticProps({ params }: GetStaticProps) {
   const { id } = params;
   const data = await getDetailVoucher(id);
-  console.log("Data : ", data);
   return {
     props: {
       dataItem: data.detail,

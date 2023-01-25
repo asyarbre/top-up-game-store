@@ -37,7 +37,6 @@ export default async function callAPI({ url, method, data, token, serverToken }:
     };
     return res;
   }
-  // console.log("Response API: ", response)
   const length  = Object.keys(response.data).length;
   const res = {
     error: false,
