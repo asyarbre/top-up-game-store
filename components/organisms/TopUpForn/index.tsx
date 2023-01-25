@@ -15,8 +15,8 @@ export default function TopUpForm(props: TopUpFormProps) {
   const router = useRouter();
   const [verifyID, setVerifyID] = useState("");
   const [bankAccountName, setBankAccountName] = useState("");
-  const [nominalItem, setNominalItem] = useState("");
-  const [paymentItem, setPaymentItem] = useState("");
+  const [nominalItem, setNominalItem] = useState({});
+  const [paymentItem, setPaymentItem] = useState({});
   const { nominals, payments } = props;
 
   const onNominalItemChange = (data: NominalsTypes) => {
@@ -49,7 +49,7 @@ export default function TopUpForm(props: TopUpFormProps) {
   }
 
   return (
-    <form action="./checkout.html" method="POST">
+    <>
       <div className="pt-md-50 pt-30">
         <div className="">
           <label
@@ -137,7 +137,7 @@ export default function TopUpForm(props: TopUpFormProps) {
           Continue
         </button>
       </div>
-    </form>
+    </>
   );
 }
 

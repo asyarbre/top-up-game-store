@@ -9,11 +9,19 @@ import { updateProfile } from "../../services/member";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
+interface UserStateTypes {
+  id: string;
+  name: string;
+  email: string;
+  avatar: any;
+}
+
 export default function EditProfile() {
   const img = process.env.NEXT_PUBLIC_API_IMG;
   const router = useRouter();
 
-  const [user, setUser] = useState({
+  const [user, setUser] = useState<UserStateTypes>({
+    id: "",
     name: "",
     email: "",
     avatar: "",
@@ -78,7 +86,7 @@ export default function EditProfile() {
                     name="avatar"
                     accept="image/png, image/jpeg"
                     onChange={(e) => {
-                      const img = e.target.files[0];
+                      const img = e.target.files![0];
                       setImagePreview(URL.createObjectURL(img));
                       return setUser({
                         ...user,

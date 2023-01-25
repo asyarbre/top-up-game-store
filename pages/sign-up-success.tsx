@@ -195,7 +195,7 @@ function signUp_success() {
         <div className="button-group d-flex flex-column mx-auto">
           <a
             className="btn btn-top-up fw-medium text-lg text-white rounded-pill"
-            href="../index.html"
+            href="/sign-in"
             role="button"
           >
             Top Up

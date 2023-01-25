@@ -51,7 +51,7 @@ export default function SignUpPhotoSuccess() {
             <div className="button-group d-flex flex-column mx-auto">
               <a
                 className="btn btn-create fw-medium text-lg text-white rounded-pill mb-16"
-                href="./sign-up-success.html"
+                href="sign-up"
                 role="button"
               >
                 Create My Account
